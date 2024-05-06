@@ -5,18 +5,18 @@ import ResetButton from "./ResetButton";
 export default class PasswordsModule extends KtaneModule {
   static get words() {
     return [
-      ["about", "after", "again", "below", "could"],
-      ["every", "first", "found", "great", "house"],
-      ["large", "learn", "never", "other", "place"],
-      ["plant", "point", "right", "small", "sound"],
-      ["spell", "still", "study", "their", "there"],
-      ["these", "thing", "think", "three", "water"],
-      ["where", "which", "world", "would", "write"]
+      ["агент", "арешт", "аркуш", "багно", "варта"],
+      ["ватра", "верба", "вигук", "віник", "вчити"],
+      ["інший", "килим", "кожен", "лаяти", "літак"],
+      ["малий", "немає", "пагін", "поруч", "право"],
+      ["ранок", "ринок", "рисак", "садок", "смуга"],
+      ["сонях", "сором", "тобто", "товчи", "торік"],
+      ["точно", "тютюн", "тяжба", "файно", "хвиля"]
     ];
   }
 
   static getTitle() {
-    return "Passwords";
+    return "Паролі";
   }
 
   constructor(props) {
@@ -87,7 +87,7 @@ export default class PasswordsModule extends KtaneModule {
 
     this.setState(prevState => {
       const columns = [...prevState.columns];
-      columns[index] = elem.value.replace(/[^a-z]/i, '').toLowerCase();
+      columns[index] = elem.value.replace(/[^а-яґєії]/i, '').toLowerCase();
       return {columns};
     });
   }
