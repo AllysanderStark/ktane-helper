@@ -15,10 +15,10 @@
 .bigButton {
     border: 2px solid black;
     border-radius: 50%;
-    height: 69px;
+    height: 85px;
     position: relative;
     text-align: center;
-    width: 69px;
+    width: 85px;
 }
 .bigButton span {
     font-family: 'Arial', 'sans-serif';

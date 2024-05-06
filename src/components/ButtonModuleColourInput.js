@@ -3,10 +3,30 @@ import ButtonModuleTextInput from "./ButtonModuleTextInput";
 
 export default class ButtonModuleColourInput extends ButtonModuleTextInput {
   getLabelContent() {
+    let colorName = this.getColorName(this.props.value)
     return (
       <span className={`button ${this.props.value}`}>
-        {this.props.value.charAt(0).toUpperCase() + this.props.value.slice(1)}
+        {colorName.charAt(0).toUpperCase() + colorName.slice(1)}
       </span>
     )
+  }
+
+  getColorName(color) {
+    switch (color) {
+      case "blue":
+        return "синій";
+      case "red":
+        return "червоний";
+      case "white":
+        return "білий";
+      case "black":
+        return "чорний";
+      case "yellow":
+        return "жовтий";
+      case "green":
+        return "зелений";
+      default: 
+        break;
+    }
   }
 }
