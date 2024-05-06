@@ -21,8 +21,8 @@ function App() {
     sectionWhosOnFirst: WhosOnFirstModule,
     sectionMemory: MemoryModule,
     sectionMorseCode: MorseCodeModule,
-    sectionWireSequences: WireSequencesModule,
     sectionComplicatedWires: ComplicatedWiresModule,
+    sectionWireSequences: WireSequencesModule,
     sectionPasswords: PasswordsModule
   };
 

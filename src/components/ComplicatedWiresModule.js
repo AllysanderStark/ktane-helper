@@ -6,21 +6,21 @@ export default class ComplicatedWiresModule extends KtaneModule {
   static get labels() {
     return {
       board: [
-        'a serial number that ends in an even digit',
-        'a parallel port',
-        'more than one battery'
+        'серійний номер, що кінчається парною цифрою',
+        'паралельний порт (довга трапеція, 2 ряди)',
+        '2+ 🔋'
       ],
       wire: [
-        'Red',
-        'Blue',
-        'Star',
-        'LED'
+        'Червоний',
+        'Синій',
+        'Зірка',
+        'Індикатор'
       ]
     }
   }
 
   static getTitle() {
-    return "Complicated Wires";
+    return "Складні дроти";
   }
 
   computeCutMap() {
@@ -71,8 +71,8 @@ export default class ComplicatedWiresModule extends KtaneModule {
     return <>
       {
         Object.entries({
-          "The board has…": "board",
-          "Wire properties (optional)": "wire"
+          "Бомба має...": "board",
+          "Параметри дрота (необов'язково)": "wire"
         }).map(([heading, group]) => (
           <React.Fragment key={group}>
             <h3>{heading}</h3>
@@ -100,8 +100,8 @@ export default class ComplicatedWiresModule extends KtaneModule {
 
       {
         Object.entries({
-          "Wires to cut": true,
-          "Wires to <u>not</u> cut": false
+          "Що різати": true,
+          "Що <u>не</u> різати": false
         }).map(([heading, targetCut]) => (
           <React.Fragment key={heading}>
             <h3 dangerouslySetInnerHTML={{__html: `${heading}:`}} />
