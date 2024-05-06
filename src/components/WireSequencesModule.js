@@ -4,16 +4,16 @@ import "../css/WireSequencesModule.css";
 
 export default class WireSequencesModule extends KtaneModule {
   static getTitle() {
-    return "Wire Sequences";
+    return "Послідовність дротів";
   }
 
   constructor(props) {
     super(props);
 
     this.cutList = {
-      red: ['C', 'B', 'A', 'AC', 'B', 'AC', 'ABC', 'AB', 'B'],
-      blue: ['B', 'AC', 'B', 'A', 'B', 'BC', 'C', 'AC', 'A'],
-      black: ['ABC', 'AC', 'B', 'AC', 'B', 'BC', 'AB', 'C', 'C']
+      red: ['В', 'Б', 'А', 'АВ', 'Б', 'АВ', 'АБВ', 'АБ', 'Б'],
+      blue: ['Б', 'АВ', 'Б', 'А', 'Б', 'БВ', 'В', 'АВ', 'А'],
+      black: ['АБВ', 'АВ', 'Б', 'АВ', 'Б', 'БВ', 'АБ', 'В', 'В']
     };
 
     this.addWire = this.addWire.bind(this);
@@ -46,7 +46,7 @@ export default class WireSequencesModule extends KtaneModule {
       <>
         <ul id="sequenceOptions">
           {
-            ['A', 'B', 'C'].map(letter => (
+            ['А', 'Б', 'В'].map(letter => (
               ['red', 'blue', 'black'].map(colour => (
                 <li key={`${colour}-${letter}`}>
                   <button className={`button ${colour}`} data-colour={colour} data-letter={letter} onClick={this.addWire}>
@@ -65,7 +65,7 @@ export default class WireSequencesModule extends KtaneModule {
                 <button className={`button ${wire.colour}`} data-index={index} onClick={this.removeWires}>
                   {wire.letter}
                 </button>
-                {wire.shouldCut ? "Cut" : "Ignore"}
+                {wire.shouldCut ? "Ріж" : "Не ріж"}
               </li>
             ))
           }
