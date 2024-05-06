@@ -5,7 +5,7 @@ import "../css/KeypadsModule.css";
 
 export default class KeypadsModule extends KtaneModule {
   static getTitle() {
-    return "Keypads";
+    return "Клавіші (символи)";
   }
 
   constructor(props) {

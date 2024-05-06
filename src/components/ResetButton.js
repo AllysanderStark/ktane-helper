@@ -4,7 +4,7 @@ import "../css/ResetButton.css";
 
 export default class ResetButton extends Component {
   render() {
-    return <button className="jsResetSection" onClick={this.props.onClick}>Reset</button>;
+    return <button className="jsResetSection" onClick={this.props.onClick}>Скинути</button>;
   }
 }
 
