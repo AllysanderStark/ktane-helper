@@ -5,15 +5,15 @@ import "../css/MemoryModule.css";
 
 export default class MemoryModule extends KtaneModule {
   static getTitle() {
-    return "Memory";
+    return "Пам'ять (цифра)";
   }
 
   constructor(props) {
     super(props);
 
-    const D = 'display';
-    const L = 'label';
-    const P = 'position';
+    const D = 'екран';
+    const L = 'значення';
+    const P = 'позиція';
     this.D = D;
     this.L = L;
     this.P = P;
@@ -76,10 +76,10 @@ export default class MemoryModule extends KtaneModule {
         <table>
           <thead>
             <tr>
-              <th>Stage</th>
-              <th>Display</th>
-              <th>Pos.</th>
-              <th>Label</th>
+              <th>Етап</th>
+              <th>Екран</th>
+              <th>Поз.</th>
+              <th>Значення</th>
             </tr>
           </thead>
           <tbody ref={this.tbodyRef}>
