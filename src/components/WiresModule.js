@@ -4,7 +4,7 @@ import "../css/WiresModule.css";
 
 export default class WiresModule extends KtaneModule {
   static getTitle() {
-    return "Wires";
+    return "Дроти";
   }
 
   constructor(props) {

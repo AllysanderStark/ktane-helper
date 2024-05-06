@@ -83,10 +83,10 @@ button {
     content: '\27fd';
 }
 .marked.odd:after {
-    content: '\27fd\a0 odd';
+    content: '\27fd\a0 непарний серійник';
 }
 .marked.even:after {
-    content: '\27fd\a0 even';
+    content: '\27fd\a0 парний серійник';
 }
 
 
