@@ -4,7 +4,7 @@ import "../css/SimonSaysModule.css";
 
 export default class SimonSaysModule extends KtaneModule {
   static getTitle() {
-    return "Simon Says";
+    return "Саймон Каже (ромб на пам'ять)";
   }
 
   constructor(props) {
@@ -21,18 +21,54 @@ export default class SimonSaysModule extends KtaneModule {
       ["RG", "BR", "GY", "YB"],
     ];
 
+    this.allColours = ["red", "green", "yellow", "blue"];
+
     this.setStrikes = this.setStrikes.bind(this);
     this.toggleVowel = this.toggleVowel.bind(this);
+    this.addColour = this.addColour.bind(this);
+    this.deleteColours = this.deleteColours.bind(this);
   }
 
   computeArrowsShown(state) {
     return (state.hasVowel ? this.arrowsWithVowel : this.arrowsWithoutVowel)[this.state.strikes];
   }
 
+  getCounterpart(colour) {
+    // Table header order - Red, blue, green, yellow
+    var index = 0;
+    switch (colour) {
+      case "red": 
+        index = 0;
+        break;
+      case "blue": 
+        index = 1;
+        break;
+      case "green": 
+        index = 2;
+        break;
+      case "yellow": 
+        index = 3;
+        break;
+      default: break;
+    }
+    let withVowel = [
+      ["blue", "red", "yellow", "green"],
+      ["yellow", "green", "blue", "red"],
+      ["green", "red", "yellow", "blue"]
+    ];
+    let withoutVowel = [
+      ["blue", "yellow", "green", "red"],
+      ["red", "blue", "yellow", "green"],
+      ["yellow", "green", "blue", "red"]
+    ];
+    return (this.state.hasVowel ? withVowel : withoutVowel)[this.state.strikes][index];
+  }
+
   getInitialState() {
     return {
       hasVowel: false,
-      strikes: 0
+      strikes: 0,
+      colours: []
     };
   }
 
@@ -41,20 +77,28 @@ export default class SimonSaysModule extends KtaneModule {
       <>
         <div id="simonInputs">
           <label>
-            <input type="checkbox" onChange={this.toggleVowel} /> Vowel
+            <input type="checkbox" onChange={this.toggleVowel} /> Чи є голосна у серійнику?
           </label>
 
           <ul>
-            {
-              [...Array(3).keys()].map(i => (
-                <li key={i}>
-                  <label>
-                    <input type="radio" checked={this.state.strikes === i} onChange={this.setStrikes} value={i} />
-                    {i} strikes
-                  </label>
-                </li>
-              ))
-            }
+            <li key="0">
+              <label>
+                <input type="radio" checked={this.state.strikes === 0} onChange={this.setStrikes} value="0" />
+                0 помилок
+              </label>
+            </li>
+            <li key="1">
+              <label>
+                <input type="radio" checked={this.state.strikes === 1} onChange={this.setStrikes} value="1" />
+                1 помилка
+              </label>
+            </li>
+            <li key="2">
+              <label>
+                <input type="radio" checked={this.state.strikes === 2} onChange={this.setStrikes} value="2" />
+                2 помилки
+              </label>
+            </li>
           </ul>
         </div>
 
@@ -73,6 +117,44 @@ export default class SimonSaysModule extends KtaneModule {
             ))
           }
         </div>
+
+        <div>
+        <ul className="colourOptions">
+          {
+            this.allColours.map(colour => (
+              <li className="colourOptions__item" key={`option_${colour}`}>
+                <button
+                  aria-label={colour}
+                  className={`button ${colour}`}
+                  data-colour={colour}
+                  onClick={this.addColour}
+                />
+              </li>
+            ))
+          }
+        </ul>
+
+        <ol className="coloursList">
+          {
+            this.state.colours.map((colour, index) => (
+              <li>
+                <button
+                  aria-label={colour}
+                  className={`button ${colour}`}
+                  data-index={index}
+                  onClick={this.deleteColours}
+                />
+                 → 
+                <button
+                  aria-label={this.getCounterpart(colour)}
+                  className={`button ${this.getCounterpart(colour)}`}
+                  onClick={this.deleteColours}
+                />
+              </li>
+            ))
+          }
+        </ol>
+        </div>
       </>
     )
   }
@@ -83,5 +165,15 @@ export default class SimonSaysModule extends KtaneModule {
 
   toggleVowel(event) {
     this.setState(state => ({hasVowel: !state.hasVowel}));
+  }
+
+  addColour(event) {
+    const colour = event.target.dataset.colour;
+
+    this.setState(state => ({colours: state.colours.concat(colour)}));
+  }
+
+  deleteColours(event) {
+    this.setState({colours: []});
   }
 }

@@ -117,3 +117,17 @@
     left: 44px;
     transform: rotate(-135deg);
 }
+#sectionSimon button {
+    border-color: black;
+    cursor: pointer;
+    width: 2em;
+    height: 2em;
+}
+.colourOptions__item {
+    display: inline-block;
+    margin-right: 0.5em;
+}
+#colourList {
+    list-style-type: decimal;
+}
+
